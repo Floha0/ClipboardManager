@@ -1,0 +1,6 @@
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\bin\Debug\ClipboardManager.exe
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\bin\Debug\ClipboardManager.pdb
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\obj\Debug\ClipboardManager.csproj.AssemblyReference.cache
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\obj\Debug\ClipboardManager.csproj.CoreCompileInputs.cache
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\obj\Debug\ClipboardManager.exe
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\obj\Debug\ClipboardManager.pdb

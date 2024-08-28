@@ -1,0 +1,10 @@
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\bin\Release\ClipboardManager.exe.manifest
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\bin\Release\ClipboardManager.application
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\bin\Release\ClipboardManager.exe
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\bin\Release\ClipboardManager.pdb
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\obj\Release\ClipboardManager.csproj.AssemblyReference.cache
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\obj\Release\ClipboardManager.csproj.CoreCompileInputs.cache
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\obj\Release\ClipboardManager.exe.manifest
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\obj\Release\ClipboardManager.application
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\obj\Release\ClipboardManager.exe
+C:\Users\Furka\RiderProjects\ClipboardManager\ClipboardManager\obj\Release\ClipboardManager.pdb
