@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -7,28 +8,38 @@ namespace ClipboardManager
 {
     internal class Program
     {
+        private static Queue<string> copiedTexts = new Queue<string>();
+        private static readonly int maxCopiedTexts = 10;
+        
+        //private static List<string> copiedTexts = new List<string>();
+        private static bool newCopy = false;
+        private static bool containsAtStart = false;
         [STAThread]
         public static void Main(string[] args)
         {
-            List<string> copiedTexts = new List<string>();
-            bool newCopy = false;
-            bool containsAtStart = false;
             
             Console.WriteLine("Clipboard Manager Started!");
             
             
             // Clipboard.Clear();
 
+            // Check the clipboard on startup
             if (Clipboard.ContainsText())
             {
                 containsAtStart = true;
-                copiedTexts.Add(Clipboard.GetText());
+                copiedTexts.Enqueue(Clipboard.GetText());
             }
             else
             {
                 string tempText = "Empty Clipboard!";
                 
-                copiedTexts.Add(tempText);
+                copiedTexts.Enqueue(tempText);
+            }
+            
+            Console.Clear();
+            for (int i = 0; i < copiedTexts.Count; i++)
+            {
+                Console.WriteLine((i+1) + ": " + copiedTexts.ElementAt(i));
             }
             
             
@@ -42,7 +53,7 @@ namespace ClipboardManager
                     }
                     else
                     {
-                        if (Clipboard.GetText() != copiedTexts[copiedTexts.Count - 1])
+                        if (Clipboard.GetText() != copiedTexts.Last())
                         {
                             newCopy = true;
                         }
@@ -56,13 +67,18 @@ namespace ClipboardManager
                         copiedTexts.Clear();
                         containsAtStart = true;
                     }
+
+                    if (copiedTexts.Count >= maxCopiedTexts)
+                    {
+                        copiedTexts.Dequeue(); // Dequeue the oldest copied text
+                    }
                     
-                    copiedTexts.Add(Clipboard.GetText());
+                    copiedTexts.Enqueue(Clipboard.GetText());
 
                     Console.Clear();
                     for (int i = 0; i < copiedTexts.Count; i++)
                     {
-                        Console.WriteLine((i + 1) + ": " + copiedTexts[i]);
+                        Console.WriteLine((i+1) + ": " + copiedTexts.ElementAt(i));
                     }
 
                     newCopy = false;
