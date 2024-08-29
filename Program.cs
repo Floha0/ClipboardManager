@@ -10,51 +10,65 @@ namespace ClipboardManager
         [STAThread]
         public static void Main(string[] args)
         {
-            bool newCopy = false;
             List<string> copiedTexts = new List<string>();
+            bool newCopy = false;
+            bool containsAtStart = false;
             
-            Clipboard.Clear();
             Console.WriteLine("Clipboard Manager Started!");
+            
+            
+            // Clipboard.Clear();
+
+            if (Clipboard.ContainsText())
+            {
+                containsAtStart = true;
+                copiedTexts.Add(Clipboard.GetText());
+            }
+            else
+            {
+                string tempText = "Empty Clipboard!";
+                
+                copiedTexts.Add(tempText);
+            }
+            
             
             while (true)
             {
-                // Ctrl + C is pressed
-                if ((Control.ModifierKeys & Keys.C) != 0 && (Control.ModifierKeys & Keys.Control) != 0)
+                if (Clipboard.ContainsText())
                 {
-                    if (!newCopy)
+                    if (!containsAtStart)
                     {
                         newCopy = true;
                     }
-                }
-                else
-                {
-                    // Ctrl + C is released
-                    if (newCopy)
+                    else
                     {
-                        if (Clipboard.ContainsText())
+                        if (Clipboard.GetText() != copiedTexts[copiedTexts.Count - 1])
                         {
-                            copiedTexts.Add(Clipboard.GetText());
+                            newCopy = true;
                         }
-                        else if (Clipboard.ContainsImage())
-                        {
-                            copiedTexts.Add("Image Copied!");
-                        }
-                        else if (Clipboard.ContainsAudio())
-                        {
-                            copiedTexts.Add("Audio Copied!");
-                        }
-
-                        Console.Clear();
-                        for (int i = 0; i < copiedTexts.Count; i++)
-                        {
-                            Console.WriteLine(i + ": " + copiedTexts[i]);
-                        }
-
-                        newCopy = false;
                     }
                 }
 
-                Thread.Sleep(25);
+                if (newCopy)
+                {
+                    if (!containsAtStart)
+                    {
+                        copiedTexts.Clear();
+                        containsAtStart = true;
+                    }
+                    
+                    copiedTexts.Add(Clipboard.GetText());
+
+                    Console.Clear();
+                    for (int i = 0; i < copiedTexts.Count; i++)
+                    {
+                        Console.WriteLine((i + 1) + ": " + copiedTexts[i]);
+                    }
+
+                    newCopy = false;
+                }
+
+                Thread.Sleep(100);
             }
         }
     }
